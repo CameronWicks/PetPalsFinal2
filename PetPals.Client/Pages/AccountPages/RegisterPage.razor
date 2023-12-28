@@ -1,17 +1,19 @@
 ﻿@page "/identity/account/register"
+@inject NavigationManager NavigationManager
 @implements IDisposable
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6">
+<div class="container-fluid justify-content-center">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 justify-content-center">
             <EditForm Enhance Model="User" OnValidSubmit="HandleRegistration">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
-                <div class="card">
-                    <div class="card-header">Fill this form to Register</div>
-                    <div class="card-body">
+                 <div class="card " >
+                     <div class="card-header justify-content-center">Fill this form to Register</div>
+                     <div class="card-body justify-content-center">
                         <div class="form-group">
                             <label class="form-label">Fullname</label>
                             <InputText @bind-Value="User.Name" class="form-control"></InputText>
+                             <span id="helpBlock1" class="help-block">This is the name that will appear on your account.</span>
                         </div>
                         <div class="form-group mt-3">
                             <label class="form-label">Email</label>
@@ -20,6 +22,7 @@
                         <div class="form-group mt-3">
                             <label class="form-label">Password</label>
                             <input type="password" @bind="User.Password" class="form-control"></input>
+                             <span id="helpBlock2" class="help-block">Make sure your password has a Uppercase character and a number.</span>
                         </div>
                         <div class="form-group mt-3">
                             <label class="form-label">Confirm Password</label>
@@ -28,7 +31,7 @@
                         <div class="form-group mt-3">
                             @if (messageDialogService.ShowSaveButton)
                             {
-                                <button class="btn btn-outline-primary float-end" type="submit">Register</button>
+                                <button class="btn btn-primary btn-lg btn-block justify-content-center" type="submit">Register</button>
                             }
                             <BusyButtonComponent ShowBusyButton="messageDialogService.ShowBusyButton"></BusyButtonComponent>
                         </div>
@@ -41,27 +44,40 @@
 <MessageDialog @ref="messageDialogService.messageDialog"></MessageDialog>
 
 
+
+
+
+
 @code {
     UserDTO User = new();
     protected override void OnInitialized()
     {
         messageDialogService.Action += StateHasChanged;
     }
+
     async Task HandleRegistration()
     {
         messageDialogService.ShowSaveButton = false;
         messageDialogService.ShowBusyButton = !messageDialogService.ShowSaveButton;
+
         var (flag, message) = await accountService.Register(User);
         if (flag)
         {
-            messageDialogService.messageDialog!.SetDialogValues("success", message);
-            User = new();
+            messageDialogService.messageDialog!.SetDialogValues("Success", message);
+
+          
+            
         }
         else
         {
-            messageDialogService.messageDialog!.SetDialogValues("danger", message);
+            messageDialogService.messageDialog!.SetDialogValues("Failed to Create an Account, Please try again.", message);
         }
+
         messageDialogService.SetMessageDialog();
+        if(flag)
+        {
+            NavManager.NavigateTo("/identity/account/login", forceLoad: true);
+        }
     }
 
     public void Dispose()

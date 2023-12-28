@@ -21,23 +21,39 @@
         </button>
         <div class="collapse navbar-collapse fw-bold" id="navbarSupportedContent" style="margin-left:25vw">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 " style="font-family:MyFont">
+
+                <a class="navbar-brand" href="#">
+                    <img src="/icon-192.png"  width="100" height="100" alt="">
+                </a>
+               
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" style="margin-right:20px" href="/">HOME</a>
+                    <a class="nav-link active" aria-current="page" style="margin-right:20px" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center" style="margin-right:20px" href="/products">PRODUCTS</a>
+                    <a class="nav-link d-flex align-items-center" style="margin-right:20px" href="/products">Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center" style="margin-right:20px" href="/otherServices">Services</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" style="margin-right:20px" href="/contact-us">Contact us</a>
+                </li>
                 <AuthorizeView Roles="Admin">
                     <Authorized>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" style="margin-right:20px" href="/add-product">ADD PRODUCTS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" style="margin-right:20px" href="/add-category">ADD CATEGORY</a>
-                        </li>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Admin Panel
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-family:sans-serif">
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center" style="margin-right:20px" href="/add-product">Add Product</a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center" style="margin-right:20px" href="/add-category">Add Catergory</a>
+                            </li>
+                           </ul>
+                           </li>
                     </Authorized>
                 </AuthorizeView>
                 <li class="nav-item dropdown">

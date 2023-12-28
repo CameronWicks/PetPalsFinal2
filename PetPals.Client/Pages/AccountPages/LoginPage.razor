@@ -1,27 +1,27 @@
 ﻿@page "/identity/account/login"
 @implements IDisposable
 @using PetPals.Client.Authentication
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6">
+<div class="container-fluid justify-content-center">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 justify-content-center">
             <EditForm Enhance Model="User" OnValidSubmit="HandleLogin">
                  <DataAnnotationsValidator />
                  <ValidationSummary />
-                 <div class="card">
-                     <div class="card-header">Fill this form to Login</div>
-                     <div class="card-body">
+                 <div class="card justify-content-center">
+                     <div class="card-header justify-content-center">LOGIN</div>
+                     <div class="card-body justify-content-center">
                          <div class="form-group mt-3">
                              <label class="form-label">Email</label>
-                             <InputText @bind-Value="User.Email" class="form-control"></InputText>
+                             <InputText @bind-Value="User.Email" class="form-control" id="floatingInput"></InputText>
                          </div>
                          <div class="form-group mt-3">
                              <label class="form-label">Password</label>
-                             <input type="password" @bind="User.Password" class="form-control"></input>
+                             <input type="password" @bind="User.Password" class="form-control" id="floatingInput"></input>
                          </div>
                          <div class="form-group mt-3">
                              @if (messageDialogService.ShowSaveButton)
                             {
-                                <button class="btn btn-outline-primary float-end" type="submit">Login</button>
+                                <button class="btn btn-primary btn-lg btn-block justify-content-center" type="submit">Login</button>
                             }
                             <BusyButtonComponent ShowBusyButton="messageDialogService.ShowBusyButton"></BusyButtonComponent>
                         </div>
@@ -32,6 +32,9 @@
     </div>
 </div>
 <MessageDialog @ref="messageDialogService.messageDialog"></MessageDialog>
+
+
+
 @code {
     protected override void OnInitialized()
     {

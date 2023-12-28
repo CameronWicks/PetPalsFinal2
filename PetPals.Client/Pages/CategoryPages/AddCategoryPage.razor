@@ -1,14 +1,14 @@
 ﻿@page "/add-category"
 @implements IDisposable
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
+<div class="container justify-content-center">
+    <div class="row justify-content-center">
+        <div class="col-md-6 justify-content-center">
             <EditForm Model="CategoryModel" Enhance OnValidSubmit="HandleSaveCategory">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
-                <div class="card">
-                    <div class="card-header">Add Category</div>
-                    <div class="card-body">
+                 <div class="card justify-content-center">
+                     <div class="card-header justify-content-center">Add Category</div>
+                     <div class="card-body justify-content-center">
                         <div class="form-group">
                             <label class="form-label"> Name</label>
                             <InputText @bind-Value="CategoryModel.Name" class="form-control"></InputText>

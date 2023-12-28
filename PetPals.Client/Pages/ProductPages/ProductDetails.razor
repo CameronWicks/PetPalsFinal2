@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="hstack gap-2">
                                         <span>Price:</span>
-                                        <span class="text-danger">@Product.Price.ToString("$#.##")</span>
+                                        <span class="text-danger">@Product.Price.ToString("R#.##")</span>
                                     </div>
                                 </div>
                             </p>
@@ -46,7 +46,9 @@
         </div>
     </div>
 </div>
+
 <MessageDialog @ref="messageDialogService.messageDialog"></MessageDialog>
+
 
 @code {
     [Parameter] public Product? Product { get; set; } = new();

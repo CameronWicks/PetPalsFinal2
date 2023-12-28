@@ -19,7 +19,7 @@ else
                     <div class="card-body p-5">
                         <span>
                             <sub style="font-size:30px; font-family:Impact">$</sub>
-                            <sup style="font-family:MyFont; font-size:20px;">@MyCartOrders.Sum(_ => _.SubTotal).ToString("#.##") </sup>
+                            <sup style="font-family:MyFont; font-size:20px;">@MyCartOrders.Sum(_ => _.SubTotal).ToString("R#.##") </sup>
                         </span>
                     </div>
                     <div class="card-footer">
@@ -81,16 +81,31 @@ else
                     </div>
                 </div>
             </div>
-            <RecommendedPage />
+            
         </div>
     </div>
 }
 <MessageDialog @ref="messageDialogService.messageDialog"></MessageDialog>
+<div class="container-fluid bg-dark text-white-50 py-4 sticky-bottom">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-md-0">&copy;   All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0">Designed by Cameron Wicks</p>
+            </div>
+        </div>
+    </div>
+</div>
 <style>
     #changeCursor {
         cursor: pointer;
     }
 </style>
+
+
+
 @code {
 
     SfPager? Page;
@@ -130,13 +145,13 @@ else
     public async Task ClearCart()
     {
 
-        // Iterate through the cart and remove all items
+        
         while (MyCartOrders.Any())
         {
             var itemToRemove = MyCartOrders.First();
             MyCartOrders.Remove(itemToRemove);
 
-            // You may want to inform the server about the item removal
+            
             await cartService.DeleteCart(itemToRemove);
         }
 

@@ -102,6 +102,15 @@ code {
     color: #c02d76;
 }
 
+/*Help Blocks*/
+.help-block {
+    color: #a94442;
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+
 
 
 /*Custom Styles*/
