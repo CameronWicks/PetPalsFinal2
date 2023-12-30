@@ -9,11 +9,11 @@
                     <div class="d-flex justify-content-between">
                         <img src="@Product!.Base64Img" width="150" height="250" />
                         <div class="card-body">
-                            <p>
+                           
                                 <div class="vstack gap-2">
                                     <h3>@Product.Name</h3>
-                                    <div class="hstack gap-2">
-                                        <span>Category:</span>
+                                <div class="product-item t d-flex p-4">
+                                    <span>Category:</span>
                                         <span>
                                             @if (Product is not null)
                                             {
@@ -21,20 +21,20 @@
                                             }
                                         </span>
                                     </div>
-                                    <div class="hstack gap-2">
-                                        <span>Quantity:</span>
+                                <div class="product-item  d-flex p-4">
+                                    <span>Stock Left:</span>
                                         <span>@Product.Quantity</span>
                                     </div>
-                                    <div class="hstack gap-2">
-                                        <span>Description:</span>
-                                        <span>@Product.Description</span>
+                                <div class="product-item  d-flex p-4">
+                                    <span>Description:</span>
+                                        <p>@Product.Description</p>
                                     </div>
                                     <div class="hstack gap-2">
                                         <span>Price:</span>
                                         <span class="text-danger">@Product.Price.ToString("R#.##")</span>
                                     </div>
                                 </div>
-                            </p>
+                            
                         </div>
                     </div>
                 </div>
