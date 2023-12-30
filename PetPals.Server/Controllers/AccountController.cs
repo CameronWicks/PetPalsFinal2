@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PetPals.Server.Repositories;
 using PetPals.Shared.DTOs;
 using PetPals.Shared.Responses;

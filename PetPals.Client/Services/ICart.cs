@@ -12,7 +12,8 @@ namespace PetPals.Client.Services
         Task<ServiceResponse> AddToCart(Product model, int updateQuantity = 1);
         Task<List<Order>> MyOrders();
         Task<ServiceResponse> DeleteCart(Order cart);
-        bool IsCartLoaderVisible { get; set; }
         
+        bool IsCartLoaderVisible { get; set; }
+
     }
 }

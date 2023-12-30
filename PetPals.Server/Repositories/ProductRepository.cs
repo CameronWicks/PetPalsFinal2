@@ -26,7 +26,7 @@ namespace PetPals.Server.Repositories
             if (featuredProducts)
                 return await appDbContext.Products
                     .Where(_ => _.Featured)
-                    .Include(_=>_.Category)
+                    .Include(_ => _.Category)
                     .ToListAsync();
             else
                 return await appDbContext.Products

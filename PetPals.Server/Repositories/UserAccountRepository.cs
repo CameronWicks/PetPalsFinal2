@@ -74,7 +74,7 @@ namespace PetPals.Server.Repositories
                 .FirstOrDefaultAsync(_ => _.UserId == userId);
             if (getUser is null)
             {
-                appDbContext.TokenInfo.Add(new TokenInfo() 
+                appDbContext.TokenInfo.Add(new TokenInfo()
                 { UserId = userId, AccessToken = accessToken, RefreshToken = refreshToken });
                 await Commit();
             }

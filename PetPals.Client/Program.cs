@@ -11,8 +11,8 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBaFt7QHFqUUdrXVNbdV5dVGpAd0N3RGlcdlR1fUUmHVdTRHRcQ19hTn5UdUVhWXhbcnQ=;Mgo+DSMBMAY9C3t2UVhhQlVFfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hSn9RdEJjXnxecnRSQGda;Mjk5OTc4M0AzMjM0MmUzMDJlMzBYZ1BNemVoK1hqT3BXZVZ0TWJCeWhTblZiMlBnclduN0tJcU9zck0zUUpNPQ==");
-                                                                                                                           
-builder.Services.AddScoped(sp => new HttpClient 
+
+builder.Services.AddScoped(sp => new HttpClient
 { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 builder.Services.AddScoped<IProductService, ClientServices>();

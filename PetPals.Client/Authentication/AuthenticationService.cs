@@ -53,7 +53,7 @@ namespace PetPals.Client.Authentication
         }
 
         //public Methods
-        public async Task SetTokenToLocalStorage(string token) => 
+        public async Task SetTokenToLocalStorage(string token) =>
             await localStorageService.SetItemAsStringAsync("access_token", token);
         public static async Task<UserSession> GetUserSession(HttpResponseMessage response)
         {
@@ -69,7 +69,7 @@ namespace PetPals.Client.Authentication
             return httpClient;
         }
 
-        public async Task RemoveTokenFromLocalStorage() => 
+        public async Task RemoveTokenFromLocalStorage() =>
             await localStorageService.RemoveItemAsync("access_token");
         public ClaimsPrincipal SetClaimPrincipal(UserSession model)
         {

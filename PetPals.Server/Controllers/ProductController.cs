@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PetPals.Server.Repositories;
 using PetPals.Shared.Models;
 using PetPals.Shared.Responses;
-using PetPals.Server.Repositories;
 namespace PetPals.Server.Controllers
 {
     [Route("api/[controller]")]
@@ -17,7 +17,7 @@ namespace PetPals.Server.Controllers
         [HttpPost]
         public async Task<ActionResult<ServiceResponse>> AddProduct(Product model)
         {
-            if(model is null) return BadRequest("Model is Null");
+            if (model is null) return BadRequest("Model is Null");
             var response = await productService.AddProduct(model);
             return Ok(response);
         }

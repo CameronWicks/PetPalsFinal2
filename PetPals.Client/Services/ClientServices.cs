@@ -32,7 +32,7 @@ namespace PetPals.Client.Services
         {
             await authenticationService.GetUserDetails();
             var privateHttpClient = await authenticationService.AddHeaderToHttpClient();
-            var response = await privateHttpClient.PostAsync(ProductBaseUrl, 
+            var response = await privateHttpClient.PostAsync(ProductBaseUrl,
                 General.GenerateStringContent(General.SerializeObj(model)));
 
             var result = CheckResponse(response);
@@ -118,7 +118,7 @@ namespace PetPals.Client.Services
         {
             await authenticationService.GetUserDetails();
             var privateHttpClient = await authenticationService.AddHeaderToHttpClient();
-            var response = await privateHttpClient.PostAsync(CateogryBaseUrl, 
+            var response = await privateHttpClient.PostAsync(CateogryBaseUrl,
                 General.GenerateStringContent(General.SerializeObj(model)));
 
             var result = CheckResponse(response);
@@ -155,7 +155,7 @@ namespace PetPals.Client.Services
 
 
         //General Method
-        private static async Task<string> ReadContent(HttpResponseMessage response) => 
+        private static async Task<string> ReadContent(HttpResponseMessage response) =>
             await response.Content.ReadAsStringAsync();
         private static ServiceResponse CheckResponse(HttpResponseMessage response)
         {
@@ -184,7 +184,7 @@ namespace PetPals.Client.Services
 
         public async Task<LoginResponse> Login(LoginDTO model)
         {
-            var response = await httpClient.PostAsync($"{AuthenticationBaseUrl}/login", 
+            var response = await httpClient.PostAsync($"{AuthenticationBaseUrl}/login",
                 General.GenerateStringContent(General.SerializeObj(model)));
 
             if (!response.IsSuccessStatusCode)
@@ -273,7 +273,7 @@ namespace PetPals.Client.Services
         public async Task<ServiceResponse> DeleteCart(Order cart)
         {
             var myCartList = General.DeserializeJsonStringList<StorageCart>(await GetCartFromLocalStorage());
-            if (myCartList is null) 
+            if (myCartList is null)
                 return new ServiceResponse(false, "Product not found");
 
             myCartList.Remove(myCartList.FirstOrDefault(_ => _.ProductId == cart.Id)!);

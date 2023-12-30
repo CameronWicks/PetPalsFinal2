@@ -18,7 +18,7 @@ namespace PhoneShopServer.Controllers
         [HttpPost]
         public async Task<ActionResult<ServiceResponse>> AddCategory(Category model)
         {
-            if(model is null) return BadRequest("Model is Null");
+            if (model is null) return BadRequest("Model is Null");
             var response = await categoryService.AddCategory(model);
             return Ok(response);
         }
