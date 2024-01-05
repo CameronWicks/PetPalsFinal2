@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Components.Authorization;
+﻿using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
 using PetPals.Client.Services;
 using System.Security.Claims;
 
 namespace PetPals.Client.Authentication
 {
-    public class CustomAuthenticationStateProvider(AuthenticationService authenticationService) : AuthenticationStateProvider
+    public class CustomAuthenticationStateProvider(AuthenticationService authenticationService, ILocalStorageService localStorageService) : AuthenticationStateProvider
     {
         private ClaimsPrincipal anonymous = new(new ClaimsIdentity());
 
@@ -29,7 +30,7 @@ namespace PetPals.Client.Authentication
         public async Task UpdateAuthenticationState(TokenProp tokenProp)
         {
             ClaimsPrincipal claimsPrincipal = new();
-            if (tokenProp is not null || !string.IsNullOrEmpty(tokenProp!.Token))
+            if (!string.IsNullOrEmpty(tokenProp!.Token))
             {
                 await authenticationService.SetTokenToLocalStorage(General.SerializeObj(tokenProp));
                 var getUserSesion = await authenticationService.GetUserDetails();
@@ -40,6 +41,8 @@ namespace PetPals.Client.Authentication
             {
                 claimsPrincipal = anonymous;
                 await authenticationService.RemoveTokenFromLocalStorage();
+                await localStorageService.RemoveItemAsync("cart");
+                await localStorageService.RemoveItemAsync("access_token");
             }
             NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(claimsPrincipal)));
         }
